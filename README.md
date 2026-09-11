@@ -1,65 +1,88 @@
 # Electric game music, as code
 
 Found on the internet, rendered from source. This repo collects **code-only electronic /
-game music** — pieces that exist as *source code*, not audio files — and renders each one
-to audio with a small self-contained synth engine, on a headless server with no
+game music** — tunes that exist as *source code* rather than audio files — and renders
+each one to audio with a small self-contained synth engine, on a headless server with no
 SuperCollider and no DAW.
 
-Every piece here is a **Sonic Pi example composition** ([sonic-pi-net/sonic-pi](https://github.com/sonic-pi-net/sonic-pi),
-`etc/examples/`): the upstream `.rb` files are the "album", the `tracks/*.py` files are
-faithful ports of those patterns onto this repo's engine, and `audio/*.mp3` are the renders.
+Three upstream code libraries are represented:
+
+| Source | What it is | Tracks here |
+|---|---|---|
+| [sonic-pi-net/sonic-pi](https://github.com/sonic-pi-net/sonic-pi) `etc/examples/` | the Sonic Pi example library (synth/pattern live-code) | Rerezzed, Tron Bike, Blockgame, Time Machine, Acid, Dark Neon |
+| [ikemura23/sonic-pi-code](https://github.com/ikemura23/sonic-pi-code) | one live-coder's Sonic Pi songbook | Cyberpunk, Cyberpunk II |
+| [robsoncouto/arduino-songs](https://github.com/robsoncouto/arduino-songs) | buzzer tunes as Arduino C note arrays | Vampire Killer, Bloody Tears, DOOM E1M1 |
 
 ## Tracks
 
-| Track | Style | Tempo | Source (code) | Audio |
-|---|---|---|---|---|
-| **Rerezzed** | Tron: Legacy electro, bitcrushed gliding dsaw | 60 | [`sorcerer/rerezzed.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/sorcerer/rerezzed.rb) | `audio/rerezzed.mp3` |
-| **Tron Bike** | dark drone / light-cycle pulse | — | [`magician/tron_bike.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/magician/tron_bike.rb) | `audio/tron_bike.mp3` |
-| **Blockgame** | 130 BPM electro game-loop (by DJ_Dave) | 130 | [`algomancer/blockgame.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/algomancer/blockgame.rb) | `audio/blockgame.mp3` |
-| **Time Machine** | arcade 32nd-note blips + TB-303 sub | 60 | [`wizard/time_machine.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/wizard/time_machine.rb) | `audio/time_machine.mp3` |
-| **Acid** | TB-303 acid rave | 60 | [`magician/acid.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/magician/acid.rb) | `audio/acid.mp3` |
-| **Dark Neon** | wobble-bass neon drive | 60 | [`incubation/dark_neon.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/incubation/dark_neon.rb) | `audio/dark_neon.mp3` |
+| Track | Style | Tempo | Length | Source (code) | Audio |
+|---|---|---|---|---|---|
+| **Rerezzed** | Tron: Legacy electro, bitcrushed gliding dsaw | 60 | 40 s | [`sorcerer/rerezzed.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/sorcerer/rerezzed.rb) | `audio/rerezzed.mp3` |
+| **Tron Bike** | dark light-cycle drone, sliding chord tones | 60 | 36 s | [`magician/tron_bike.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/magician/tron_bike.rb) | `audio/tron_bike.mp3` |
+| **Blockgame** | 130 BPM electro game loop (by DJ_Dave) | 130 | 44 s | [`algomancer/blockgame.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/algomancer/blockgame.rb) | `audio/blockgame.mp3` |
+| **Time Machine** | arcade 32nd-note blips + TB-303 sub | 60 | 44 s | [`wizard/time_machine.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/wizard/time_machine.rb) | `audio/time_machine.mp3` |
+| **Acid** | TB-303 acid rave | 60 | 36 s | [`magician/acid.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/magician/acid.rb) | `audio/acid.mp3` |
+| **Dark Neon** | wobble-bass neon drive | 60 | 40 s | [`incubation/dark_neon.rb`](https://github.com/sonic-pi-net/sonic-pi/blob/dev/etc/examples/incubation/dark_neon.rb) | `audio/dark_neon.mp3` |
+| **Cyberpunk** | 40 BPM slowed Amen-break cyberpunk groove | 40 | 48 s | [`2024-03-08_CyberPunk.rb`](https://github.com/ikemura23/sonic-pi-code/blob/main/2024/2024-03-08_CyberPunk.rb) | `audio/cyberpunk.mp3` |
+| **Cyberpunk II** | hypnotic minimal variant, sliding tech-saw bass | 60 | 48 s | [`2024-01-20_cyberpunk.rb`](https://github.com/ikemura23/sonic-pi-code/blob/main/2024/2024-01-20_cyberpunk.rb) | `audio/cyberpunk_2.mp3` |
+| **Vampire Killer** | Castlevania (NES) stage 1 | 130 | 62 s | [`vampirekiller.ino`](https://github.com/robsoncouto/arduino-songs/blob/master/vampirekiller/vampirekiller.ino) | `audio/vampire_killer.mp3` |
+| **Bloody Tears** | Castlevania II (NES) | 144 | 108 s | [`bloodytears.ino`](https://github.com/robsoncouto/arduino-songs/blob/master/bloodytears/bloodytears.ino) | `audio/bloody_tears.mp3` |
+| **E1M1 "At Doom's Gate"** | DOOM (1993), driven lead + double kick | 225 | 99 s | [`doom.ino`](https://github.com/robsoncouto/arduino-songs/blob/master/doom/doom.ino) | `audio/doom_e1m1.mp3` |
 
-Each `tracks/*.py` header documents exactly what is faithful to the original and what had
-to be approximated (there is no SuperCollider here, so Sonic Pi synths like `:dsaw`,
-`:tb303`, `:fm`, `:prophet`, `:blade` are re-implemented with oscillators, filters and
-envelopes; `beat_stretch` becomes resampling; Sonic Pi's random `.choose`/`.shuffle` is
-seeded so renders are reproducible).
+Every `tracks/*.py` file opens with a docstring stating exactly what is faithful to the
+upstream code and what had to be approximated: there is no SuperCollider here, so Sonic Pi
+synths (`:dsaw`, `:tb303`, `:fm`, `:prophet`, `:blade`, `:tech_saws`, `:beep`, `:pulse`,
+`:dpulse`) are re-implemented from oscillators, filters and envelopes; `beat_stretch`
+becomes resampling; `note_slide`/`cutoff_slide` become per-sample frequency / cutoff
+curves; and Sonic Pi's random `.choose`/`.shuffle`/`rrand` are seeded so renders are
+reproducible. For the Arduino tunes the drum groove is an addition by this project (those
+sketches are single-voice buzzer melodies); the note data itself is untouched.
 
 ## Engine
 
-`engine/synth.py` — ~450 lines, numpy + scipy only:
+`engine/synth.py` — numpy + scipy only:
 
-* notes in **Sonic Pi convention** (`e2` == MIDI 40), and Sonic Pi `cutoff:` values are
-  MIDI note numbers, so `S.cut(30)` ≈ 46 Hz while `S.cut(130)` ≈ 15 kHz;
+* notes in **Sonic Pi convention** (`e2` == MIDI 40) and Sonic Pi `cutoff:` values as MIDI
+  note numbers (`S.cut(30)` ≈ 46 Hz … `S.cut(130)` ≈ 15 kHz);
 * polyBLEP band-limited saw / pulse / square, plus triangle, sine, noise;
-* ADSR envelopes and portamento (`S.glide_freq`, i.e. Sonic Pi `note_slide`);
-* RBJ biquad low/high-pass with **time-varying cutoff** (`S.lpf_curve`) — used for
-  filter sweeps, TB-303 squelch and wobble bass;
+* ADSR envelopes, portamento (`S.glide_freq`) and **time-varying filters**
+  (`S.lpf_curve` / `S.hpf_curve`) — used for 303 squelch, filter sweeps and wobble;
 * FX: `echo`, `reverb` (convolution), `bitcrush`, `slicer`, `wobble`, `compress`;
-* the Sonic Pi sample library (`samples/*.flac`, fetched from the upstream repo) played
-  with `rate` / `start` / `finish` / `lpf` / `hpf`, and a `beat_stretch_sample` helper.
+* the Sonic Pi sample library (`samples/*.flac`, fetched from upstream) with `rate`,
+  `start` / `finish`, `lpf` / `hpf`, plus a `beat_stretch_sample` helper.
+
+Two tools do the heavy lifting for the Arduino tunes:
+
+* `tools/arduino_songs.py` — parses `NOTE_*` frequency defines and divider/dotted-note
+  durations straight out of an `.ino` sketch;
+* `tracks/_chiptune.py` — chip lead (pulse + sub-octave + optional drive) and a drum
+  backbeat helper.
 
 ## Render it yourself
 
 ```bash
 python3 -m venv --system-site-packages .venv
 .venv/bin/pip install scipy            # numpy + ffmpeg required too
-.venv/bin/python render.py             # all tracks -> audio/*.wav + audio/*.mp3
+.venv/bin/python render.py             # every track -> audio/*.wav + audio/*.mp3
 .venv/bin/python render.py acid        # one track
 .venv/bin/python render.py --list      # track table
 .venv/bin/python test_smoke.py         # engine self-test
-.venv/bin/python tools/analyze.py audio/acid.wav   # per-4s loudness / spectrum report
+.venv/bin/python tools/analyze.py audio/acid.wav   # loudness / spectrum report
 ```
 
 ## Credits and licensing
 
-* Example compositions: the Sonic Pi project — `etc/examples/` in
-  [sonic-pi-net/sonic-pi](https://github.com/sonic-pi-net/sonic-pi) (MIT-licensed repo).
-  `rerezzed`, `tron_bike`, `time_machine`, `acid`, `dark_neon` are by **Sam Aaron**;
-  `blockgame` is by **DJ_Dave**. `rerezzed` is an arrangement of Daft Punk's *Rerezzed*
-  (*Tron: Legacy*) — the underlying composition belongs to its authors.
-* Samples in `samples/` are the Sonic Pi sample library, redistributed here for the same
+* Sonic Pi example compositions: **Sam Aaron** (`rerezzed`, `tron_bike`, `time_machine`,
+  `acid`, `dark_neon`) and **DJ_Dave** (`blockgame`) — `etc/examples/` of
+  [sonic-pi-net/sonic-pi](https://github.com/sonic-pi-net/sonic-pi) (MIT repo).
+  `rerezzed` is an arrangement of Daft Punk's *Rerezzed* (*Tron: Legacy*).
+* **ikemura23** — [`sonic-pi-code`](https://github.com/ikemura23/sonic-pi-code)
+  (Cyberpunk, Cyberpunk II).
+* **robsoncouto** — [`arduino-songs`](https://github.com/robsoncouto/arduino-songs)
+  (transcriptions). The underlying compositions belong to their authors: *Vampire Killer*
+  and *Bloody Tears* are Konami (Kinuyo Yamashita / Satoe Terashima / Kenichi Matsubara),
+  *E1M1 "At Doom's Gate"* is Robert "Bobby" Prince (id Software).
+* Samples in `samples/` are the Sonic Pi sample library, included for the same
   educational, personal use.
-* Renders in `audio/` are approximations made for listening/study, not official releases.
-* Engine and ports: MIT.
+* Renders in `audio/` are approximations made for listening and study, not official
+  releases. Engine, tools and ports are MIT (see `LICENSE`).
